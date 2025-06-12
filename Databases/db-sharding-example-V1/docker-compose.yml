@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command: --server-id=1 --log-bin=mysql-bin --binlog-format=row
+    networks:
+      - mysqlnet
+
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    restart: always
+    command: --server-id=2 --log-bin=mysql-bin --binlog-format=row
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    depends_on:
+      - mysql-master
+    networks:
+      - mysqlnet
+
+volumes:
+  master-data:
+  slave-data:
+
+networks:
+  mysqlnet:
+    driver: bridge 
