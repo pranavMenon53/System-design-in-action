@@ -6,6 +6,10 @@ This guide provides step-by-step instructions to set up MySQL master-slave repli
 
 ---
 
+```text
+Note: Steps 2,4 run in the same terminal, and steps 3,5 run in the same terminal
+```
+
 ## Step 1: Start Docker Containers
 
 ```bash
@@ -111,7 +115,7 @@ Ensure there are no errors in the output.
 
 ## Step 4: Insert Data in the Master Node
 
-Use the same or a new terminal:
+Use the same terminal as step 2 or start a new terminal:
 
 ```bash
 docker exec -it mysql-master mysql -uroot -proot
@@ -131,7 +135,7 @@ SELECT * FROM users;
 
 ## Step 5: Verify Data on the Slave Node
 
-Use the same or a new terminal:
+Use the same terminal as step 3 or start a new terminal:
 
 ```bash
 docker exec -it mysql-slave mysql -uroot -proot
