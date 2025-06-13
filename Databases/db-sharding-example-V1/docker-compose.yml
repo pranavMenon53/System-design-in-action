@@ -1,0 +1,47 @@
+version: '3.8'
+
+# Use this docker compose file to bring up the DB shards.
+
+services:
+
+  # docker exec -it shard1-database-server mysql -uroot -proot
+  # USE customers_db;
+  # Select * from customers;
+  shard1-database-server:
+    image: mysql:8.0
+    container_name: shard1-database-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    command: --server-id=1 --log-bin=mysql-bin --binlog-format=row
+    volumes:
+      - ./shard1-init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mysqlnet
+
+  # docker exec -it shard2-database-server mysql -uroot -proot
+  # USE customers_db;
+  # Select * from customers;
+  shard2-database-server:
+    image: mysql:8.0
+    container_name: shard2-database-server
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    command: --server-id=2 --log-bin=mysql-bin --binlog-format=row
+    volumes:
+      - ./shard2-init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - mysqlnet
+
+volumes:
+  master-data:
+  slave-data:
+
+networks:
+  mysqlnet:
+    driver: bridge 
