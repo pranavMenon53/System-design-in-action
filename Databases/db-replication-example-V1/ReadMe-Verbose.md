@@ -98,3 +98,6 @@ Source - https://dev.to/siddhantkcode/how-to-set-up-a-mysql-master-slave-replica
     - **1** - `USE shard1;`
     - **2** - `SELECT * from users;`
     - Data should be displayed now.
+
+## Additional resources
+1. https://dev.mysql.com/blog-archive/setting-up-mysql-asynchronous-replication-for-high-availability/
