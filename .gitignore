@@ -24,10 +24,14 @@ hs_err_pid*
 replay_pid*
 
 
-Databases/db-sharding-example-V1/sharding-with-spring-v1/target
-Databases/db-sharding-example-V1/sharding-with-spring-v1/.mvn
-Databases/db-sharding-example-V1/sharding-with-spring-v1/mvnw
-Databases/db-sharding-example-V1/sharding-with-spring-v1/mvnw.cmd
-Databases/db-sharding-example-V1/sharding-with-spring-v1/.gitattributes
-Databases/db-sharding-example-V1/sharding-with-spring-v1/.gitignore
-Databases/db-sharding-example-V1/sharding-with-spring-v1/HELP
+Databases/*/*/target
+Databases/*/*/.mvn
+Databases/*/*/mvnw
+Databases/*/*/mvnw.cmd
+Databases/*/*/.gitattributes
+Databases/*/*/.gitignore
+Databases/*/*/HELP
+Databases/*/*/.idea
+
+# specific to db-storing-and-streaming-videos-V1
+Databases/*/*/uploaded_chunks  
